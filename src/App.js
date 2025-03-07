@@ -4,7 +4,7 @@ import experiencias from './experiencias';
 import estudios from './estudios';
 import aptitudes from './aptitudes';
 import perfil from './perfil';
-import generatePDF from './generatePDF';
+import generatePDF from './generatePDF'; // Importamos la funcion para generar PDF
 import './App.css';
 
 function App() {

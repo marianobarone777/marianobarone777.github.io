@@ -107,7 +107,7 @@ const generatePDF = async () => {
     exp.tareas.forEach((tarea) => {
       checkPageBreak(10);
       const lines = doc.splitTextToSize(`• ${tarea}`, contentWidth - 5);
-      doc.text(lines, margin + 5, yPosition, { align: 'justify', maxWidth:170, lineHeightFactor: 1.4 });
+      doc.text(lines, margin + 5, yPosition, { align: 'justify', maxWidth:170, lineHeightFactor: 1.4 }); // Agregamos el max with para que quede justificado al mismo nivel que la linea
       yPosition += lines.length * 5;
     });
     yPosition += 3;
