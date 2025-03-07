@@ -1,38 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+/* Fondo global */
 body {
   margin: 0;
   padding: 0;
+  background: linear-gradient(135deg, #1E3A8A, #3B82F6); /* Degradado azul en el body */
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  min-height: 100vh;
 }
 
 .App {
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(to bottom, #ffffff, #f5f5f5);
-  color: #333;
-  min-height: 100vh;
-  padding: 20px;
-  max-width: 900px; /* Ancho fijo para todo el contenido */
-  margin: 0 auto; /* Centrado */
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent; /* Sin fondo en .App, lo hereda del body */
 }
 
-/* Header */
-.header {
+/* Contenedor fijo para header y tabs */
+.fixed-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #ffffff;
-  padding: 10px 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), inset 0 -1px 4px rgba(255, 255, 255, 0.8);
   z-index: 1000;
+  background: rgba(255, 255, 255, 0.95); /* Fondo blanco semi-transparente */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+/* Header */
+.header {
+  padding: 10px 20px;
 }
 
 .header-content {
-  max-width: 900px; /* Igualamos al ancho fijo */
+  max-width: 900px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .foto {
@@ -40,9 +47,9 @@ body {
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #007bff;
+  border: 3px solid #10B981;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .foto:hover {
@@ -55,84 +62,77 @@ body {
 
 .header h1 {
   margin: 0;
-  font-size: 1.6em;
+  font-size: 1.8em;
   font-weight: 700;
+  color: #1E3A8A;
 }
 
 .header p {
   margin: 3px 0 0 0;
-  font-size: 0.95em;
+  font-size: 1em;
   color: #666;
 }
 
 .contacto-header p {
   margin: 3px 0;
-  font-size: 0.85em;
+  font-size: 0.9em;
 }
 
 .contacto-header a {
-  color: #007bff;
+  color: #10B981;
   text-decoration: none;
 }
 
 .contacto-header a:hover {
   text-decoration: underline;
-  color: #0056b3;
+  color: #059669;
 }
 
 /* Tabs */
 .tabs {
-  position: fixed;
-  top: 114px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 900px; /* Ancho fijo para las pestañas como 4 botones */
-  max-width: 100%; /* Evita desborde en móviles */
+  max-width: 900px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #e0e0e0;
-  background-color: #f9f9f9;
-  padding: 0;
-  z-index: 900;
-  box-sizing: border-box;
+  padding: 5px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .tabs button {
   flex: 1;
-  padding: 8px 0;
+  padding: 10px 0;
   border: none;
-  background-color: #f9f9f9;
+  background: transparent;
   cursor: pointer;
-  font-size: 0.9em;
+  font-size: 0.95em;
   font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   border-radius: 8px 8px 0 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), inset 0 -1px 2px rgba(255, 255, 255, 0.6);
-  text-align: center;
 }
 
 .tabs button.active {
-  background-color: #007bff;
+  background-color: #10B981;
   color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .tabs button:hover:not(.active) {
   transform: scale(1.02);
-  background-color: #e6e6e6;
+  background-color: #E6E6E6;
 }
 
 /* Contenido */
 .tab-content {
-  padding: 20px;
-  padding-top: 140px;
-  min-height: 400px;
-  background-color: #ffffff;
+  margin-top: 170px; /* Espacio fijo para header + tabs, ajustable */
+  padding: 25px;
+  background-color: #F3F4F6; /* Fondo gris claro solo para el contenido */
   border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - 140px); /* Asegura que ocupe el resto de la pantalla */
 }
 
-/* Secciones */
+/* Resto del CSS (secciones) se mantiene igual */
 .perfil ul {
   list-style: none;
   padding: 0;
@@ -151,43 +151,44 @@ body {
 
 .experiencia-item strong {
   display: block;
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: 600;
   margin-top: 15px;
   margin-bottom: 12px;
+  color: #1E3A8A;
 }
 
 .experiencia-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #E0E0E0;
   border-radius: 8px;
   overflow: hidden;
 }
 
 .experiencia-table th {
-  background-color: #f0f0f0;
-  padding: 10px;
+  background-color: #E6E6E6;
+  padding: 12px;
   text-align: left;
-  font-size: 0.9em;
+  font-size: 0.95em;
   font-weight: 600;
-  border-bottom: 2px solid #d0d0d0;
+  border-bottom: 2px solid #D0D0D0;
 }
 
 .experiencia-table td {
-  padding: 10px;
+  padding: 12px;
   vertical-align: top;
   line-height: 1.5;
   text-align: justify;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #EEE;
   font-size: 0.9em;
 }
 
 .experiencia-table th:first-child,
 .experiencia-table td:first-child {
   width: 50%;
-  border-right: 1px solid #d0d0d0;
+  border-right: 1px solid #D0D0D0;
 }
 
 .experiencia-table th:last-child,
@@ -201,13 +202,14 @@ body {
 }
 
 .estudios li {
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .estudios strong {
   display: block;
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: 600;
+  color: #1E3A8A;
 }
 
 .estudios p {
@@ -223,7 +225,6 @@ body {
   margin-top: 5px;
 }
 
-/* Aptitudes centradas */
 .aptitudes {
   display: flex;
   flex-direction: column;
@@ -231,16 +232,17 @@ body {
 }
 
 .categoria {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   width: 100%;
   max-width: 600px;
 }
 
 .categoria h3 {
-  font-size: 0.95em;
+  font-size: 1em;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   text-align: center;
+  color: #1E3A8A;
 }
 
 .skill {
@@ -253,25 +255,25 @@ body {
 .skill-name {
   width: 300px;
   min-width: 250px;
-  font-size: 0.85em;
+  font-size: 0.9em;
   margin-right: 15px;
   text-align: left;
 }
 
 .circles {
   display: flex;
-  gap: 5px;
+  gap: 6px;
   align-items: center;
 }
 
 .circle {
   width: 16px;
   height: 16px;
-  background-color: #e0e0e0;
+  background-color: #E0E0E0;
   border-radius: 50%;
-  border: 1px solid #d0d0d0;
+  border: 1px solid #D0D0D0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .circle.filled {
@@ -279,21 +281,21 @@ body {
 }
 
 .circles.gestion-y-liderazgo .circle.filled {
-  background-color: #4caf50 !important;
+  background-color: #10B981;
 }
 
 .circles.metodologias .circle.filled {
-  background-color: #007bff !important;
+  background-color: #3B82F6;
 }
 
 .circles.herramientas-tecnicas-y-lenguajes .circle.filled {
-  background-color: #6f42c1 !important;
+  background-color: #6B7280;
 }
 
-/* Media Queries para móviles */
+/* Media Queries */
 @media (max-width: 768px) {
   .App {
-    padding: 10px;
+    padding: 0 15px;
   }
 
   .header {
@@ -303,7 +305,7 @@ body {
   .header-content {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
   }
 
   .foto {
@@ -312,7 +314,41 @@ body {
   }
 
   .header h1 {
-    font-size: 1.4em;
+    font-size: 1.5em;
+  }
+
+  .header p {
+    font-size: 0.9em;
+  }
+
+  .contacto-header p {
+    font-size: 0.8em;
+  }
+
+  .tabs {
+    padding: 5px 15px;
+  }
+
+  .tabs button {
+    width: 25%;
+    padding: 8px 0;
+    font-size: 0.9em;
+  }
+
+  .tab-content {
+    margin-top: 120px; /* Ajustado para tablets */
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .foto {
+    width: 40px;
+    height: 40px;
+  }
+
+  .header h1 {
+    font-size: 1.2em;
   }
 
   .header p {
@@ -324,135 +360,35 @@ body {
   }
 
   .tabs {
-    top: 80px;
-    width: 100%; /* En móviles, ocupa todo el ancho disponible */
-    max-width: 600px; /* Pero no excede el ancho fijo */
+    flex-direction: column;
+    padding: 5px 15px;
   }
 
   .tabs button {
-    width: 25%; /* 4 botones iguales en tablets */
-    padding: 6px 0;
+    width: 100%;
+    padding: 8px 0;
     font-size: 0.85em;
-    border-radius: 8px 8px 0 0; /* Restauramos bordes en móviles */
   }
 
   .tab-content {
+    margin-top: 335px; /* Más espacio en móviles pequeños */
     padding: 15px;
-    padding-top: 120px;
-  }
-
-  .perfil li {
-    font-size: 0.9em;
-  }
-
-  .experiencia-item strong {
-    font-size: 0.95em;
-  }
-
-  .experiencia-table th,
-  .experiencia-table td {
-    font-size: 0.85em;
-    padding: 8px;
-  }
-
-  .estudios strong {
-    font-size: 0.95em;
-  }
-
-  .estudios p {
-    font-size: 0.9em;
-  }
-
-  .estudios .detalle {
-    font-size: 0.8em;
-  }
-
-  .categoria {
-    max-width: 100%;
-  }
-
-  .categoria h3 {
-    font-size: 0.9em;
-  }
-
-  .skill-name {
-    width: 200px;
-    min-width: 200px;
-    font-size: 0.8em;
-  }
-
-  .circle {
-    width: 14px;
-    height: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .foto {
-    width: 30px;
-    height: 30px;
-  }
-  .header h1 {
-    font-size: 1em;
-  }
-
-  .header p {
-    font-size: 0.8em;
-  }
-
-  .contacto-header p {
-    font-size: 0.7em;
-  }
-
-  .tabs {
-    top: 175px; /* para que aparezcan los botones sin cortar */
-    flex-direction: column; /* Apilamos en teléfonos pequeños */
-  }
-
-  .tabs button {
-    width: 100%; /* Botones apilados ocupan todo el ancho */
-    padding: 6px 0;
-    font-size: 0.8em;
-    border-radius: 0; /* Sin bordes redondeados cuando se apilan */
-  }
-
-  .tab-content {
-    padding-top: 265px; /* Texto que aparece inmediatamente despues de los botones */
-  }
-
-  .perfil li {
-    font-size: 0.85em;
-  }
-
-  .experiencia-table th,
-  .experiencia-table td {
-    font-size: 0.8em;
-    padding: 6px;
-  }
-
-  .skill-name {
-    width: 150px;
-    min-width: 150px;
-  }
-
-  .circle {
-    width: 12px;
-    height: 12px;
   }
 }
 
 .pdf-button {
-  padding: 8px 16px;
-  background-color: #007bff;
+  padding: 10px 20px;
+  background-color: #10B981;
   color: #ffffff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 0.9em;
+  font-size: 0.95em;
   font-weight: 600;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .pdf-button:hover {
-  background-color: #0056b3;
+  background-color: #059669;
+  transform: scale(1.05);
 }
